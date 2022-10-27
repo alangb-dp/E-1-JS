@@ -1,29 +1,29 @@
-const pizza = [
+const pizzas = [
     {
         id: 30,
         nombre: "q jamone",
-        ingredientes: ["muzarella", "huevo", "roquefort", "napolitana", "triple queso", "jamon"],
+        ingredientes: ["jamon especial", "borde relleno"],
         precio: 350
     },
 
     {
         id: 7,
         nombre: "la charly garcia",
-        ingredientes: ["muzarella", "huevo", "roquefort", "napolitana", "triple queso", "jamon"],
+        ingredientes: ["muzarella"],
         precio: 500
     },
 
     {
         id: 13,
         nombre: "la maradona",
-        ingredientes: ["muzarella", "huevo", "roquefort", "napolitana", "triple queso", "jamon"],
+        ingredientes: ["morron", "huevo", "jamon"],
         precio: 650
     },
 
     {
         id: 20,
         nombre: "leo messi",
-        ingredientes: ["muzarella", "huevo", "roquefort", "napolitana", "triple queso", "jamon"],
+        ingredientes: ["muzarella", "huevo", "morron"],
         precio: 490
 
     },
@@ -31,14 +31,14 @@ const pizza = [
     {
         id: 17,
         nombre: "picantovich",
-        ingredientes: ["muzarella", "huevo", "roquefort", "napolitana", "triple queso", "jamon"],
+        ingredientes: ["picante", "huevo", "roquefort"],
         precio: 330
     },
  
     {
         id: 4,
         nombre: "mc bin laden",
-        ingredientes: ["muzarella", "huevo", "roquefort", "napolitana", "triple queso", "jamon"],
+        ingredientes: ["muzarella", "huevo", "roquefort"],
         precio: 700
     }
 
@@ -47,7 +47,7 @@ const pizza = [
 
 console.log("- - - EJERCICIO A - - -");
 
-const Idimpar = pizza.forEach((pizza) =>{
+const Idimpar = pizzas.forEach((pizza) =>{
     if (pizza.id % 2 !==0){
         console.log(`la pizza ${pizza.nombre} tiene un id impar`)
     }
@@ -55,7 +55,7 @@ const Idimpar = pizza.forEach((pizza) =>{
 
 console.log("- - - EJERCICIO B - - -")
 
-const valorMenorA600 = pizza.some(pizza => pizza.precio < 600)
+const valorMenorA600 = pizzas.some(pizza => pizza.precio < 600)
 // console.log(`¿hay alguna pizza menor a 600?: ${valorMenorA600}`);
 const mensajeAmigable = valorMenorA600
 const msj = (mensajeAmigable) ? "Si tenemos pizzas de menor a 600" : "No tenemos pizzas de menor a 600"
@@ -63,26 +63,15 @@ console.log(msj)
 
 console.log("- - - EJERCICIO C - - -")
 
-const listaDePizzas = pizza.forEach((pizza)=>{
+const listaDePizzas = pizzas.forEach((pizza)=>{
     console.log(`la pizza ${pizza.nombre} tiene un valor de: ${pizza.precio}`)
 })
 
 console.log("- - - EJERCICIO D - - -")
 
-const pizzaNombre = pizza.find(elemento => {
-    return elemento.nombre = "q jamone"
-});
-console.log (pizzaNombre)
-
-// Ejercicio D, no comprendi. no entiendo de que manera tengo que unir esos dos recorridos diferentes
-
-
-
-
-
-
-
-
-
-
-
+const pizzasConIngredientes = pizzas.forEach((pizza) =>{
+    console.log(`La pizza ${pizza.nombre} tiene los siguientes ingredientes:`)
+    pizza.ingredientes.forEach ((ingrediente, index) => {
+        console.log(`Ingrediente Nro ${index + 1}: ${ingrediente}`)
+    })
+})
