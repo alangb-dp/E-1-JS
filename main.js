@@ -45,6 +45,62 @@ const pizzas = [
 ];
 
 
+const form = document.querySelector(".form-pizza");
+const input = document.querySelector(".input");
+const renderNamePizza = document.querySelector(".info-pizza h2");
+const renderPricePizza = document.querySelector(".info-pizza h3");
+const errorHtml = document.querySelector(".error span");
+const containerError = document.querySelector(".error");
+const containerInfoPizza = document.querySelector(".info-pizza");
+
+
+
+const getNamePizza = (pizzaName) => {
+  renderNamePizza.textContent = `Nombre: ${pizzaName}`;
+};
+
+const getPricePizza = (pizzaPrice) => {
+  renderPricePizza.textContent = `Valor: ${pizzaPrice}`;
+};
+
+const error = (id) => {
+  containerInfoPizza.style.display = "none";
+  if (id.value !== ""){
+    containerError.innerHTML = `El id <span>"${id.value}"</span> no es correcto.`
+    // console.log("sim sim")
+    }
+   else  containerError.textContent = "Ingrese ID";
+  //  console.log("nao nao")
+}
+
+
+const buscarPorId = () => {
+  const pizzasId = pizzas.find((pizza) => pizza.id == input.value);
+  if (pizzasId) {
+    containerInfoPizza.style.display = "flex";
+    containerError.style.display = "none";
+    getNamePizza(pizzasId.nombre);
+    getPricePizza(pizzasId.precio);
+  } 
+  else {
+    error(input);
+      containerError.style.display="flex"
+  }
+};
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  buscarPorId();
+  form.reset();
+});
+
+
+
+
+
+/*  ENTREGA 1
+
+
 console.log("- - - EJERCICIO A - - -");
 
 const Idimpar = pizzas.forEach((pizza) =>{
@@ -74,4 +130,6 @@ const pizzasConIngredientes = pizzas.forEach((pizza) =>{
     pizza.ingredientes.forEach ((ingrediente, index) => {
         console.log(`Ingrediente Nro ${index + 1}: ${ingrediente}`)
     })
-})
+})*/
+
+
